@@ -16,7 +16,7 @@
 
 https://www.npmjs.com/package/@browsemake/browser-cli
 
-## Why Broswer CLI?
+## Why Browser CLI?
 - **Just works**: simply browser automation, coding not required, leave the rest workflow to the most powerful LLM agent
 - **AI first**: designed for LLM agent, readable view from HTML, and error hint
 - **Secure**: can be run locally, no credential passed to LLM 
