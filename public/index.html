@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Browser CLI Screenshot Tool</title>
+<link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>📸 Browser CLI Screenshot Tool</h1>
+  </div>
+  <div class="mode-toggle">
+    <button type="button" class="mode-btn active" data-mode="single" onclick="setMode('single')">Single</button>
+    <button type="button" class="mode-btn" data-mode="multi" onclick="setMode('multi')">Multi</button>
+  </div>
+  <div class="form-container">
+    <form id="screenshot-form">
+      <div class="form-group">
+        <label for="url">URL</label>
+        <input type="text" id="url" name="url" placeholder="example.com" autofocus required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="width">Width (px)</label>
+          <input type="number" id="width" name="width" placeholder="1280">
+        </div>
+        <div class="form-group">
+          <label for="height">Height (px)</label>
+          <input type="number" id="height" name="height" placeholder="720">
+        </div>
+        <div class="form-group">
+          <label for="waitTime">Wait (ms)</label>
+          <input type="number" id="waitTime" name="waitTime" placeholder="1000" min="0" step="100">
+        </div>
+      </div>
+
+      <div class="advanced-toggle" onclick="toggleAdvanced()">⚙️ Advanced Options</div>
+      <div id="advanced-options" class="advanced-options">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="output_width">Output Width (px)</label>
+            <input type="number" id="output_width" name="output_width" placeholder="Original" min="1">
+          </div>
+          <div class="form-group">
+            <label for="output_format">Output Format</label>
+            <select id="output_format" name="output_format">
+              <option value="">PNG</option>
+              <option value="webp">WebP</option>
+              <option value="jpeg">JPEG</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="output_quality">Output Quality (1-100)</label>
+            <input type="number" id="output_quality" name="output_quality" placeholder="80" min="1" max="100">
+          </div>
+        </div>
+      </div>
+
+      <div id="multi-section" class="multi-section hidden">
+        <h3>Output Configurations</h3>
+        <div id="outputs-list"></div>
+        <button type="button" class="btn btn-secondary" onclick="addOutput()">+ Add Output</button>
+      </div>
+
+      <button type="submit" class="btn" id="submit-btn">📸 Capture Screenshot</button>
+    </form>
+  </div>
+
+  <div id="result-container" class="result-container result-single">
+    <div class="result-actions">
+      <button class="btn btn-secondary" onclick="downloadScreenshot()">⬇️ Download</button>
+      <button class="btn btn-secondary" onclick="resetForm()">🔄 New Screenshot</button>
+    </div>
+    <div class="screenshot-preview"><img id="screenshot-img" alt="Screenshot"></div>
+  </div>
+
+  <div id="result-container-multi" class="result-container result-multi">
+    <div class="result-actions">
+      <button class="btn btn-secondary" onclick="resetForm()">🔄 New Screenshot</button>
+    </div>
+    <div id="multi-results" class="multi-results"></div>
+  </div>
+</div>
+<script src="/js/app.js"></script>
+</body>
+</html>

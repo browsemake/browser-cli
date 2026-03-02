@@ -1,0 +1,92 @@
+! Custom Ad Block Filters
+! Add your custom ad blocking rules here
+! This file is processed during build alongside downloaded filter lists
+!
+! Examples:
+! Block a specific domain:
+! ||example-ads.com^
+!
+! Block specific URLs:
+! |https://example.com/ads/*
+!
+! Hide elements with CSS selectors (cosmetic rules):
+! example.com##.advertisement
+! example.com##div[class*="ad-"]
+!
+! For rule syntax, see: https://adblockplus.org/filter-cheatsheet
+
+! === COSMETIC RULES (Element Hiding) ===
+cnn.com##div[style="background-color: rgba(0, 0, 0, 0.4); position: fixed; min-width: 100%; min-height: 100%; inset: 0px; z-index: 999999;"]
+www.gcj.news##.gcj-popup-overlay
+theroot.com##.frontpage-top-banner-container
+theroot.com##.therootads-epi-mobile_inpost-top
+propublica.org###cta
+
+
+! General popup/modal elements
+! ##div[aria-modal="true"]
+##.elementor-popup-modal
+##div.newspack-popup-container
+##.CampaignType--popup
+##.CampaignType--floating
+##.fancybox-overlay
+##.ays-pb-close-popup-with-esc
+##iframe[title="Popup"][src="about:blank"]
+##.et_bloom_popup
+##.sqs-popup-overlay
+##.modal[aria-label="Promotional pop up"]
+##.oxy-modal-backdrop
+##.pum-overlay.popmake-overlay
+##.popup-wrapper__content--active
+##section#hy-lead-magnet-section
+##.cp-popup-container[data-module-type="modal_popup"]
+##dialog.popup
+###signup[role="dialog"]
+###global-popup.modal
+##.modal.is-active
+##.jetpack-subscribe-overlay.open
+##.modal1.is-active
+###ocn-cookie-wrap
+##.popup-wrapper---brix
+##.popup-wrap.popup-newsletter
+! https://www.charlottenewsvt.org/ anti adblock
+###ROuPvtIdXyOZro
+###xdBWbPneRFmtMom
+! alt: $$("span[style='font-size:clamp(19px, calc(1.1rem + 1vw), 22px)']")[0].parentNode.click()
+##.CampaignType--floating
+! hubspot
+###hs-interactives-modal-overlay
+##.hs-cta-embed__loaded
+##.daily_digest_modal
+##.js-donation-banner
+
+inthesetimes.com##.fixedalert
+
+! from https://easylist.to/easylist/fanboy-annoyance.txt
+dailyevergreen.com,dailyexpose.uk,thewalrus.ca##.wppopups-whole
+
+! === NETWORK RULES (URL Blocking) ===
+! Block CNN cookie/privacy script
+||cnn.com/wbdotp/scripttemplates/otSDKStub.js^
+
+! Block general cookie consent scripts
+/wp-content/plugins/pressidium-cookie-consent/*
+/wp-content/plugins/cookie-law-info/*
+
+! Block wisepops popup service
+||cdn.wisepops.com/shared/wisepops/*
+
+! Block popup builder plugin
+/plugins/popup-builder/public/js/Popup.js
+
+! Block Squarespace popup overlay scripts
+||assets.squarespace.com/universal/scripts-compressed/popup-overlay*
+
+! Block FundraiseUp lightbox
+||static.fundraiseup.com/*.lightbox.js
+
+
+
+! === COOKIE SETTING RULES ===
+! Set Substack intro popup cookie to hide the popup
+discourseblog.com,dropsitenews.com,erininthemorning.com,*.substack.com,zeteo.com##+js(set-cookie, intro_popup_last_hidden_at, 2029-01-01T01:01:01.000Z)

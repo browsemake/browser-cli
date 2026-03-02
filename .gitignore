@@ -1,3 +1,6 @@
+# Claude configuration directory
+.claude/
+
 # Logs
 logs
 *.log
@@ -137,3 +140,9 @@ dist
 # Vite logs files
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Plans directory
+plans/
+
+# Playwright local config
+.playwright/
